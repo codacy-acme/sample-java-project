@@ -12,6 +12,8 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NullCipher;
 
+import java.lang.NumberFormatException;
+
 public class Library {
     public boolean someLibraryMethod() {
         return true;
@@ -41,4 +43,67 @@ public class Library {
         byte[] iv3 = "secret iv in here".getBytes();
 
     }
+    
+    void towerOfHanoi(int n, char from_rod, char to_rod, char helper_rod)
+    {
+        if (n == 1)
+        {
+            System.out.println("Take disk 1 from rod " +  from_rod + " to rod " + to_rod);
+            return;
+        }
+        towerOfHanoi(n-1, from_rod, helper_rod, to_rod);
+        System.out.println("Take disk " + n + " from rod " +  from_rod + " to rod " + to_rod);
+        towerOfHanoi(n-1, helper_rod, to_rod, from_rod);
+    }
+    
+    void otherTowerOfHanoi(int n, char from_rod, char to_rod, char helper_rod)
+    {
+        if (n == 1)
+        {
+            System.out.println("Take disk 1 from rod " +  from_rod + " to rod " + to_rod);
+            return;
+        }
+        towerOfHanoi(n-1, from_rod, helper_rod, to_rod);
+        System.out.println("Take disk " + n + " from rod " +  from_rod + " to rod " + to_rod);
+        towerOfHanoi(n-1, helper_rod, to_rod, from_rod);
+    }
+    
+    static long extractMillisecond(String sValue){
+        return 0;
+    }
+    
+    public static long parseTimeValue(String sValue) {
+
+    if (sValue == null) {
+        return 0;
+    }
+
+    try {
+        long millis;
+        if (sValue.endsWith("S")) {
+            millis = 0;
+        } else if (sValue.endsWith("ms")) {
+            millis = 0;
+        } else if (sValue.endsWith("s")) {
+            millis = 0;
+        } else if (sValue.endsWith("m")) {
+            millis = extractMillisecond(sValue);
+            if (sValue.endsWith("H") || sValue.endsWith("h")) {
+            millis = 0;
+        } else if (sValue.endsWith("d")) {
+            millis = 0;
+        } else if (sValue.endsWith("w")) {
+            millis = 0;
+        }
+        }  else {
+            millis = Long.parseLong(sValue);
+        }
+
+        return millis;
+
+    } catch (NumberFormatException e) {
+    }
+
+    return 0;
+}
 }
